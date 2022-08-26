@@ -1,4 +1,4 @@
-package wargame;
+package src;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -14,7 +14,7 @@ public class TropaTest {
     }
 
     @Test
-    void debe_atacar_a_otra_tropa(){
+    void debe_atacar_a_otra_tropa_tanque_a_soldado(){
         Tropa tanque1 = new Tropa("tanque1", 1, 2.0f);
         Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
         Escudo escudo = new Escudo();
@@ -23,6 +23,19 @@ public class TropaTest {
         tanque1.atacar(soldado1, escudo);
         assertEquals(0.0f, soldado1.getVida(), 0.0f);
     }
+
+    @Test 
+    void debe_atacar_tanque_a_buque(){
+        Tropa tanque = new Tropa("tanque",1,2.0f);
+        Tropa buque = new Tropa("buque",1,3.0f);
+        Escudo escudo = new Escudo();
+        escudo.setDefensa2();
+        tanque.atacar(buque, escudo);
+        //assertEquals(2.65f, buque.getVida(),0.00f);
+        tanque.atacar(buque, escudo);
+        tanque.atacar(buque, escudo);
+    }
+
     @Test
     void debe_crear_un_soldado_sin_escudo(){
         Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
@@ -40,7 +53,6 @@ public class TropaTest {
         Escudo escudoT2 = new Escudo();
         escudoT2.setDefensa0();
         tanque2.atacar(soldado1, escudoT2);
-        
         tanque2.atacar(soldado1, escudoT2);
         tanque2.atacar(soldado1, escudoT2);
     }
