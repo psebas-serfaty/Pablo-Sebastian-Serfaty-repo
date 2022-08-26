@@ -1,15 +1,27 @@
+package wargame;
+
 public class Escudo {
 
-    public float defenseT0(int damage){
-        return damage;
+    private float defense;
+
+    public float getDefense() {
+        return defense;
+    }
+    public void setDefensa0(){
+        this.defense = 0.95f;
+
+    }
+    public void setDefensa1(){
+        this.defense = 0.75f;
+
+    }
+    public void setDefensa2(){
+        this.defense = 0.55f;
+
+    }
+    public float defensaXdano(int damage){
+        return (float) this.getDefense()*damage;
     }
 
-    public float defenseT1(int damage){
-        return (float) (damage*0.75);
-    }
-    
-    public float defenseT2(int damage){
-        return (float) (damage*0.5);
-    }
 
 }

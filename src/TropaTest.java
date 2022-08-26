@@ -1,3 +1,5 @@
+package wargame;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -26,5 +28,20 @@ public class TropaTest {
         Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
         Tropa tanque1 = new Tropa("tanque1", 1, 2.0f);
         tanque1.atacar(soldado1, null);
+    }
+
+    @Test
+    void ataque_diferentes_escudos()
+    {
+        Tropa tanque2 = new Tropa("tanque_eduardo", 1, 2.0f);
+        Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
+        Escudo escudoT1 = new Escudo();
+        escudoT1.setDefensa1();
+        Escudo escudoT2 = new Escudo();
+        escudoT2.setDefensa0();
+        tanque2.atacar(soldado1, escudoT2);
+        
+        tanque2.atacar(soldado1, escudoT2);
+        tanque2.atacar(soldado1, escudoT2);
     }
 }

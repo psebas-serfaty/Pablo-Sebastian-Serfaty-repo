@@ -1,3 +1,4 @@
+package wargame;
 
 public class Tropa {
     private String nombre;
@@ -32,7 +33,7 @@ public class Tropa {
     public void atacar(Tropa enemigo, Escudo escudo) {
         if(this.verificarVida() == true && enemigo.verificarVida() == true){
             if (escudo != null) {
-                enemigo.setVida(enemigo.getVida() - escudo.defenseT2(this.getDaño()));
+                enemigo.setVida(enemigo.getVida() - escudo.defensaXdano(this.getDaño()));
             }
             else {
                 enemigo.setVida(enemigo.getVida() - this.getDaño());
