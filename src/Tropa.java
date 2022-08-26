@@ -1,10 +1,9 @@
-package wargame;
 
 public class Tropa {
     private String nombre;
     private int daño;
     private float vida;
-
+    private float vidaQuitada;
     public Tropa(String nombre, int daño, Float vida) {
         this.setNombre(nombre);
         this.setDaño(daño);
@@ -33,13 +32,17 @@ public class Tropa {
     public void atacar(Tropa enemigo, Escudo escudo) {
         if(this.verificarVida() == true && enemigo.verificarVida() == true){
             if (escudo != null) {
-                enemigo.setVida(enemigo.getVida() - escudo.defensaXdano(this.getDaño()));
+                vidaQuitada = escudo.defenseT0(this.getDaño());
+                enemigo.setVida(enemigo.getVida() - vidaQuitada);
             }
             else {
-                enemigo.setVida(enemigo.getVida() - this.getDaño());
+                // transformar el daño a float
+                vidaQuitada = (float) this.getDaño();
+                
+                enemigo.setVida(enemigo.getVida() - vidaQuitada);
             }
             
-            System.out.println(this.getNombre() + " ataco a " + enemigo.getNombre() + " y le quito " + this.getDaño() + " de vida. \nLa vida de " + enemigo.getNombre() + " es " + enemigo.getVida());
+            System.out.println(this.getNombre() + " ataco a " + enemigo.getNombre() + " y le quito " + vidaQuitada + " de vida. \nLa vida de " + enemigo.getNombre() + " es " + enemigo.getVida());
         }
         else{
             System.out.println(this.getNombre() + " no puede atacar a "+ enemigo.getNombre() + " porque esta muerto");
