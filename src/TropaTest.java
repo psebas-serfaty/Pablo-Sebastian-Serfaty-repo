@@ -21,4 +21,10 @@ public class TropaTest {
         tanque1.atacar(soldado1, escudo);
         assertEquals(0.0f, soldado1.getVida(), 0.0f);
     }
+    @Test
+    void debe_crear_un_soldado_sin_escudo(){
+        Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
+        Tropa tanque1 = new Tropa("tanque1", 1, 2.0f);
+        tanque1.atacar(soldado1, null);
+    }
 }
